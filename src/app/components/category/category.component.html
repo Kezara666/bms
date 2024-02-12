@@ -1,0 +1,54 @@
+<div class="glass-container">
+    <h1 class="gradient-text">Category Registration Form</h1>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="row">
+
+            <div class="form-group col-md-3">
+                <label for="name" class="gradient-text">Name</label>
+                <div class="glass-input">
+                    <input type="text" id="name" placeholder="Name" name="name" [(ngModel)]="category.name" required>
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-2">
+                <label for="branchId" class="gradient-text">Branch</label>
+                <div class="glass-input">
+                    <select id="branchId" name="branchId" [(ngModel)]="category.branchId" required>
+                        <option class="options" *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12 pb">
+                <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="container mt-4 glass-container">
+    <ejs-grid #grid
+    [dataSource]='categories'
+    [toolbar]='toolbar' 
+    (toolbarClick)='toolbarClick($event)' 
+    [allowExcelExport]='true' 
+    [allowPdfExport]='true' 
+    [editSettings]='editSettings'
+    [allowPaging]='true'
+    [allowSorting]="true" 
+    [allowFiltering]="true" 
+    [filterSettings]='filterSettings'
+    showColumnMenu='true' 
+    [loadingIndicator]='loadingIndicator'
+    allowTextWrap='true' >
+        <e-columns class="glass-container">
+            <e-column field='id' headerText='ID' width='100' textAlign='Right'></e-column>
+            <e-column field='name' headerText='Name' width='100'></e-column>
+            <e-column field='branch.name' headerText='Branch' width='100'></e-column>
+        </e-columns>
+    </ejs-grid>
+</div>

@@ -1,0 +1,161 @@
+<div class="glass-container">
+    <h1 class="gradient-text">Product Registration Form</h1>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="name" class="gradient-text">Name</label>
+                <div class="glass-input">
+                    <input type="text" id="name" placeholder="Name" name="name" [(ngModel)]="product.name" required>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="productCode" class="gradient-text">Product Code</label>
+                <div class="glass-input">
+                    <input type="number" id="productCode" placeholder="Product Code" name="productCode"
+                        [(ngModel)]="product.productCode" required>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="barCode" class="gradient-text">Bar Code</label>
+                <div class="glass-input">
+                    <input type="number" id="barCode" placeholder="Bar Code" name="barCode"
+                        [(ngModel)]="product.barCode" required>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="alcoholPresent" class="gradient-text">Alcohol Present (%)</label>
+                <div class="glass-input">
+                    <input type="number" id="alcoholPresent" placeholder="Alcohol Present (%)" name="alcoholPresent"
+                        [(ngModel)]="product.alcholPresent" required>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="bottleCount" class="gradient-text">Bottle Count</label>
+                <div class="glass-input">
+                    <input type="number" id="bottleCount" placeholder="Bottle Count" name="bottleCount"
+                        [(ngModel)]="product.bottleCount" min="0">
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="bottleHaveMililiter" class="gradient-text">Bottle Volume (mL)</label>
+                <div class="glass-input">
+                    <input type="number" id="bottleHaveMililiter" placeholder="Bottle Volume (mL)"
+                        name="bottleHaveMililiter" [(ngModel)]="product.bottleHaveMililiter" min="0">
+                </div>
+            </div>
+
+
+
+            <div class="form-group col-md-3">
+                <label for="emptyPrice" class="gradient-text">Empty Price</label>
+                <div class="glass-input">
+                    <input type="number" id="emptyPrice" placeholder="Empty Price" name="emptyPrice"
+                        [(ngModel)]="product.emptyPrice" min="0">
+                </div>
+            </div>
+            <!-- Repeat for other properties -->
+
+
+
+            <!-- suppliers -->
+            <div class="form-group col-md-2">
+                <label for="branchId" class="gradient-text">Supplier</label>
+                <div class="glass-input">
+                    <select id="supplierId" name="supplierId" [(ngModel)]="product.supplierId" required>
+                        <option class="options" *ngFor="let supplier of suppliers" [value]="supplier.id">{{
+                            supplier.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!-- category -->
+            <div class="form-group col-md-2">
+                <label for="branchId" class="gradient-text">Category</label>
+                <div class="glass-input">
+                    <select id="categoryId" name="categoryId" [(ngModel)]="product.categoryId" required>
+                        <option class="options" *ngFor="let category of categories" [value]="category.id">{{
+                            category.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!-- branch -->
+            <div class="form-group col-md-2">
+                <label for="branchId" class="gradient-text">Branch</label>
+                <div class="glass-input">
+                    <select id="branchId" name="branchId" [(ngModel)]="product.branchId" required>
+                        <option class="options" *ngFor="let branch of branches" [value]="branch.id">{{
+                            branch.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="sellingPrice" class="gradient-text">Selling Price</label>
+                <div class="glass-input">
+                    <input type="number" id="sellingPrice" placeholder="Selling Price" name="sellingPrice"
+                        [(ngModel)]="product.sellingPrice" min="0" required>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="buyerPrice" class="gradient-text">Buyer Price</label>
+                <div class="glass-input">
+                    <input type="number" id="buyerPrice" placeholder="Buyer Price" name="buyerPrice"
+                        [(ngModel)]="product.buyerPrice" min="0" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12 pb">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+<div class="container mt-4 glass-container">
+  <ejs-grid #grid
+    [dataSource]='products'
+    [toolbar]='toolbar'
+    (toolbarClick)='toolbarClick($event)'
+    [allowExcelExport]='true'
+    [allowPdfExport]='true'
+    [editSettings]='editSettings'
+    [allowPaging]='true'
+    [allowSorting]="true"
+    [allowFiltering]="true"
+    [filterSettings]='filterSettings'
+    showColumnMenu='true'
+    [loadingIndicator]='loadingIndicator'
+    allowTextWrap='true'>
+        <e-columns class="glass-container">
+            <e-column field='id' headerText='ID' width='150' textAlign='Right'></e-column>
+            <e-column field='name' headerText='Name' width='150'></e-column>
+            <e-column field='productCode' headerText='Product Code' width='150'></e-column>
+            <e-column field='barCode' headerText='Bar Code' width='150'></e-column>
+            <e-column field='alcholPresent' headerText='Alcohol Present' width='150' format='N2'></e-column>
+            <e-column field='bottleCount' headerText='Bottle Count' width='150'></e-column>
+            <e-column field='bottleHaveMililiter' headerText='Volume (ml)' width='150'></e-column>
+            <e-column field='emptyPrice' headerText='Empty Price' width='150' format='C2'></e-column>
+            <e-column field='sellingPrice' headerText='Selling Price' width='150' format='C2'></e-column>
+            <e-column field='buyerPrice' headerText='Buyer Price' width='150' format='C2'></e-column>
+            <e-column field='category.name' headerText='Category' width='150'></e-column>
+            <e-column field='supplier.name' headerText='Supplier' width='150'></e-column>
+            <e-column field='branch.name' headerText='Branch' width='150'></e-column>
+        </e-columns>
+  </ejs-grid>
+</div>

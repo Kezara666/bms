@@ -1,0 +1,85 @@
+<div class="glass-container">
+    <h1 class="gradient-text">Supplier Registration Form</h1>
+    <form (ngSubmit)="onSubmit()" #supplierForm="ngForm">
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="name" class="gradient-text">Name</label>
+          <div class="glass-input">
+            <input type="text" id="name" placeholder="Name" name="name" [(ngModel)]="supplier.name" required>
+          </div>
+        </div>
+  
+        <div class="form-group col-md-2">
+          <label for="shortName" class="gradient-text">Short Name</label>
+          <div class="glass-input">
+            <input type="text" id="shortName" placeholder="Short Name" name="shortName" [(ngModel)]="supplier!.shortName" required>
+          </div>
+        </div>
+  
+        <div class="form-group col-md-2">
+          <label for="address" class="gradient-text">Address</label>
+          <div class="glass-input">
+            <input type="text" id="address" placeholder="Address" name="address" [(ngModel)]="supplier!.address" required>
+          </div>
+        </div>
+  
+        <div class="form-group col-md-2">
+          <label for="companyRegNo" class="gradient-text">Company Reg. No</label>
+          <div class="glass-input">
+            <input type="text" id="companyRegNo" placeholder="Company Registration Number" name="companyRegNo" [(ngModel)]="supplier!.companyRegNo">
+          </div>
+        </div>
+  
+        <div class="form-group col-md-2">
+          <label for="telNo" class="gradient-text">Telephone Number</label>
+          <div class="glass-input">
+            <input type="number" id="telNo" placeholder="Telephone Number" name="telNo" [(ngModel)]="supplier!.telNo" required>
+          </div>
+        </div>
+  
+        <div class="form-group col-md-2">
+            <label for="branchId" class="gradient-text">Branch</label>
+            <div class="glass-input">
+                <select id="branchId" name="branchId" [(ngModel)]="supplier!.branchId" required>
+                    <option class="options" *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+  
+        <div class="form-group col-md-12">
+          <button type="submit" class="btn btn-primary" [disabled]="supplierForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+
+
+  
+<div class="container mt-4 glass-container">
+    <ejs-grid #grid
+    [dataSource]='suppliers'
+    [toolbar]='toolbar' 
+    (toolbarClick)='toolbarClick($event)' 
+    [allowExcelExport]='true' 
+    [allowPdfExport]='true' 
+    [editSettings]='editSettings'
+    [allowPaging]='true'
+    [allowSorting]="true" 
+    [allowFiltering]="true" 
+    [filterSettings]='filterSettings'
+    showColumnMenu='true' 
+    [loadingIndicator]='loadingIndicator'
+    allowTextWrap='true' >
+        <e-columns class="glass-container">
+            <e-column field='id' headerText='ID' width='100' textAlign='Right'></e-column>
+            <e-column field='name' headerText='Name' width='100'></e-column>
+            <e-column field='shortName' headerText='Short Name' width='100'></e-column>          
+            <e-column field='address' headerText='Address' width='100'></e-column>
+            <e-column field='companyRegNo' headerText='Address' width='100'></e-column>
+            <e-column field='telNo' headerText='Address' width='100'></e-column>
+            <e-column field='branch.name' headerText='Branch' width='100'></e-column>
+        </e-columns>
+    </ejs-grid>
+</div>

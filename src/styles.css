@@ -1,1 +1,357 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importing Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@syncfusion/ej2-material-theme/styles/material.css';
+
+
+* {
+    margin: 0;
+    padding: 2px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    animation: changeColor 3600s infinite;
+}
+
+@keyframes changeColor {
+    0% {
+        background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    }
+
+    12.5% {
+        background: radial-gradient(circle, rgb(244, 245, 244) 0%, rgb(14, 22, 14) 100%);
+    }
+
+    25% {
+        background: radial-gradient(circle, rgb(244, 245, 244) 0%, rgb(7, 109, 7) 100%);
+    }
+
+    37.5% {
+        background: radial-gradient(circle, rgb(112, 203, 231) 0%, rgb(0, 26, 255) 100%);
+    }
+
+    50% {
+        background: radial-gradient(circle, rgba(255, 255, 0, 1) 0%, rgba(255, 165, 0, 1) 100%);
+    }
+
+    62.5% {
+        background: radial-gradient(circle, rgba(255, 0, 255, 1) 0%, rgba(238, 174, 202, 1) 100%);
+    }
+
+    75% {
+        background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    }
+
+    87.5% {
+        background: radial-gradient(circle, rgba(148, 187, 233, 1) 0%, rgb(3, 78, 107) 100%);
+    }
+
+    100% {
+        background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    }
+}
+
+.content {
+    padding-left: 120px;
+    padding-right: 10px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(17px);
+    --webkit-backdrop-filter: blur(17px);
+    border-right: 1px solid rgba(255, 255, 255, 0.7);
+    transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 260px;
+}
+
+/* router content */
+
+.content {
+    transition: padding-left 0.3s ease;
+    /* Add transition for a smooth effect */
+}
+
+.contentsidebaropen {
+    padding-left: 260px;
+}
+
+/* End router content */
+
+.sidebar .logo {
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 25px 10px 15px;
+}
+
+.logo img {
+    width: 50px;
+    border-radius: 40%;
+}
+
+.logo h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-left: 15px;
+    display: none;
+}
+
+.sidebar:hover .logo h2 {
+    display: block;
+}
+
+.sidebar .links {
+    list-style: none;
+    margin-top: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: calc(100% - 140px);
+}
+
+.sidebar .links::-webkit-scrollbar {
+    display: none;
+}
+
+.links li {
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.links li:hover {
+    cursor: pointer;
+    background: #fff;
+}
+
+.links h4 {
+    color: #222;
+    font-weight: 500;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.sidebar:hover .links h4 {
+    display: block;
+}
+
+.links hr {
+    margin: 10px 8px;
+    border: 1px solid #4c4c4c;
+}
+
+.sidebar:hover .links hr {
+    border-color: transparent;
+}
+
+.links li span {
+    padding: 12px 10px;
+}
+
+.links li a {
+    padding: 10px;
+    color: #000;
+    display: none;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.sidebar:hover .links li a {
+    display: block;
+}
+
+.links .logout-link {
+    margin-top: 20px;
+}
+
+/*input*/
+.glass-input {
+    background: rgba(255, 255, 255, 0.15);
+    /* Adjust the alpha channel for transparency */
+    backdrop-filter: blur(10px);
+    /* Adjust the blur amount */
+    border-radius: 10px;
+    padding: 10%;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.glass-input input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    padding: 1px;
+    color: #810202;
+    font-size: 16px;
+}
+
+.glass-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* styles.css or dropdown options in option*/
+.custom-dropdown {
+    background-color: #f0f0f0; /* Set your desired background color */
+    color: #333; /* Set your desired font color */
+  }
+  
+  .custom-dropdown option {
+    background-color: #f0f0f0; /* Set the same or different background color */
+    color: #333; /* Set the same or different font color */
+  }
+
+  
+
+  /*********************   Componenet related ******************************************/
+  .header {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add margin as needed */
+    color: #000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.header i {
+    margin-right: 10px;
+}
+
+.pb{
+padding-top: 5%;
+}
+
+
+/* Glass-like select input */
+.glass-select {
+    position: relative;
+    width: 100%;
+}
+
+.glass-select::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #090909;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+.options{
+    background: rgba(134, 132, 132, 0.2); /* Semi-transparent white */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light white border for a subtle outline */
+    backdrop-filter: blur(10px); /* Blur the background behind the element */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    padding: 20px; /* Space inside the element */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+
+
+.table {
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow around the table */
+    border-collapse: separate;
+    border-spacing: 0 15px; 
+    border-radius: 10px;/* Adjust as needed, adds space between rows */
+  }
+  
+  /* Additional styling to enhance the glass effect */
+  .table th, .table td {
+   
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for table cells */
+    background-color: transparent; /* Ensures cells have a transparent background */
+  }
+  
+  .table thead th {
+    
+    border-radius: 10px;
+    background-color: rgba(124, 228, 204, 0.5); /* Slightly more opaque for header cells */
+  }
+
+
+  /*grid coloring*/
+  .e-grid .e-headercell {
+    background: rgba(127, 34, 34, 0.2); /* Semi-transparent white */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light white border for a subtle outline */
+    backdrop-filter: blur(10px); /* Blur the background behind the element */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    padding: 20px; /* Space inside the element */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  /* Changing the row text color */
+
+  
+  .e-grid .e-rowcell {
+    background: rgba(134, 132, 132, 0.2); /* Semi-transparent white */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light white border for a subtle outline */
+    backdrop-filter: blur(10px); /* Blur the background behind the element */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    padding: 20px; /* Space inside the element */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  /* Customizing the color of a specific column */
+  
+
+
+  /*********************   Componenet related end******************************************/
